@@ -11,7 +11,7 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-        
+
         body {
             background-color: #f4f4f9;
             padding: 10px;
@@ -37,6 +37,7 @@
             margin-bottom: 15px;
             overflow: hidden;
             padding-bottom: 10px;
+            position: relative;
         }
 
         .bike-trip img {
@@ -61,6 +62,29 @@
             color: #555;
             margin-bottom: 5px;
         }
+
+        .checkbox-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .score-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .score-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
     </style>
 </head>
 <body>
@@ -68,115 +92,74 @@
     <div class="container">
         <h1>Trajets de Vélo en Corrèze</h1>
 
-        <!-- Circuit 1 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182548/carte.png" alt="Circuit 1">
-            <div class="bike-trip-info">
-                <h2>La Vallée de la Corrèze</h2>
-                <p><strong>Dénivelé :</strong> 386 m</p>
-                <p><strong>Distance :</strong> 22,4 km</p>
-                <p><strong>Temps :</strong> 1h 30min</p>
-                <p><strong>Lieu :</strong> Corrèze</p>
-            </div>
+        <div id="trajets-container">
+            <!-- Les trajets sont insérés ici dynamiquement -->
         </div>
-
-        <!-- Circuit 2 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182549/carte.png" alt="Circuit 2">
-            <div class="bike-trip-info">
-                <h2>Les Gorges de la Dordogne</h2>
-                <p><strong>Dénivelé :</strong> 450 m</p>
-                <p><strong>Distance :</strong> 35 km</p>
-                <p><strong>Temps :</strong> 2h 15min</p>
-                <p><strong>Lieu :</strong> Argentat-sur-Dordogne</p>
-            </div>
+        <div id="total-score-container" style="text-align: center; margin-top: 20px;">
+            <p><strong>Total des points : </strong><span id="total-score">0</span></p>
+            <button class="score-button" id="calculate-score">Calculer le Score</button>
         </div>
-
-        <!-- Circuit 3 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182550/carte.png" alt="Circuit 3">
-            <div class="bike-trip-info">
-                <h2>Le Plateau de Millevaches</h2>
-                <p><strong>Dénivelé :</strong> 620 m</p>
-                <p><strong>Distance :</strong> 50 km</p>
-                <p><strong>Temps :</strong> 3h 30min</p>
-                <p><strong>Lieu :</strong> Meymac</p>
-            </div>
-        </div>
-
-        <!-- Circuit 4 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182551/carte.png" alt="Circuit 4">
-            <div class="bike-trip-info">
-                <h2>Autour de Collonges-la-Rouge</h2>
-                <p><strong>Dénivelé :</strong> 280 m</p>
-                <p><strong>Distance :</strong> 18 km</p>
-                <p><strong>Temps :</strong> 1h 15min</p>
-                <p><strong>Lieu :</strong> Collonges-la-Rouge</p>
-            </div>
-        </div>
-
-        <!-- Circuit 5 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182552/carte.png" alt="Circuit 5">
-            <div class="bike-trip-info">
-                <h2>La Boucle des Monédières</h2>
-                <p><strong>Dénivelé :</strong> 540 m</p>
-                <p><strong>Distance :</strong> 42 km</p>
-                <p><strong>Temps :</strong> 2h 45min</p>
-                <p><strong>Lieu :</strong> Treignac</p>
-            </div>
-        </div>
-
-        <!-- Circuit 6 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182553/carte.png" alt="Circuit 6">
-            <div class="bike-trip-info">
-                <h2>Brive et ses alentours</h2>
-                <p><strong>Dénivelé :</strong> 310 m</p>
-                <p><strong>Distance :</strong> 25 km</p>
-                <p><strong>Temps :</strong> 1h 45min</p>
-                <p><strong>Lieu :</strong> Brive-la-Gaillarde</p>
-            </div>
-        </div>
-
-        <!-- Circuit 7 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182554/carte.png" alt="Circuit 7">
-            <div class="bike-trip-info">
-                <h2>Autour du Lac de Bort-les-Orgues</h2>
-                <p><strong>Dénivelé :</strong> 720 m</p>
-                <p><strong>Distance :</strong> 55 km</p>
-                <p><strong>Temps :</strong> 3h 45min</p>
-                <p><strong>Lieu :</strong> Bort-les-Orgues</p>
-            </div>
-        </div>
-
-        <!-- Circuit 8 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182555/carte.png" alt="Circuit 8">
-            <div class="bike-trip-info">
-                <h2>Randonnée vers Tulle</h2>
-                <p><strong>Dénivelé :</strong> 430 m</p>
-                <p><strong>Distance :</strong> 30 km</p>
-                <p><strong>Temps :</strong> 2h 10min</p>
-                <p><strong>Lieu :</strong> Tulle</p>
-            </div>
-        </div>
-
-        <!-- Circuit 9 -->
-        <div class="bike-trip">
-            <img src="https://fichier1.cirkwi.com/image/carte/420x420/182556/carte.png" alt="Circuit 9">
-            <div class="bike-trip-info">
-                <h2>Vélo et patrimoine à Uzerche</h2>
-                <p><strong>Dénivelé :</strong> 350 m</p>
-                <p><strong>Distance :</strong> 28 km</p>
-                <p><strong>Temps :</strong> 2h</p>
-                <p><strong>Lieu :</strong> Uzerche</p>
-            </div>
-        </div>
-
     </div>
+
+    <script>
+        // Liste des trajets avec les points attribués
+        const trajets = [
+            { nom: "La Vallée de la Corrèze", points: 1, denivele: "386 m", distance: "22,4 km", temps: "1h 30min", lieu: "Corrèze", img: "https://fichier1.cirkwi.com/image/carte/420x420/182548/carte.png" },
+            { nom: "Les Gorges de la Dordogne", points: 2, denivele: "450 m", distance: "35 km", temps: "2h 15min", lieu: "Argentat-sur-Dordogne", img: "https://fichier1.cirkwi.com/image/carte/420x420/182549/carte.png" },
+            { nom: "Le Plateau de Millevaches", points: 3, denivele: "620 m", distance: "50 km", temps: "3h 30min", lieu: "Meymac", img: "https://fichier1.cirkwi.com/image/carte/420x420/182550/carte.png" },
+            { nom: "Autour de Collonges-la-Rouge", points: 1, denivele: "280 m", distance: "18 km", temps: "1h 15min", lieu: "Collonges-la-Rouge", img: "https://fichier1.cirkwi.com/image/carte/420x420/182551/carte.png" },
+            { nom: "La Boucle des Monédières", points: 3, denivele: "540 m", distance: "42 km", temps: "2h 45min", lieu: "Treignac", img: "https://fichier1.cirkwi.com/image/carte/420x420/182552/carte.png" },
+            { nom: "Brive et ses alentours", points: 1, denivele: "310 m", distance: "25 km", temps: "1h 45min", lieu: "Brive-la-Gaillarde", img: "https://fichier1.cirkwi.com/image/carte/420x420/182553/carte.png" },
+            { nom: "Autour du Lac de Bort-les-Orgues", points: 4, denivele: "720 m", distance: "55 km", temps: "3h 45min", lieu: "Bort-les-Orgues", img: "https://fichier1.cirkwi.com/image/carte/420x420/182554/carte.png" },
+            { nom: "Randonnée vers Tulle", points: 2, denivele: "430 m", distance: "30 km", temps: "2h 10min", lieu: "Tulle", img: "https://fichier1.cirkwi.com/image/carte/420x420/182555/carte.png" },
+            { nom: "Vélo et patrimoine à Uzerche", points: 2, denivele: "350 m", distance: "28 km", temps: "2h", lieu: "Uzerche", img: "https://fichier1.cirkwi.com/image/carte/420x420/182556/carte.png" }
+        ];
+
+        const trajetsContainer = document.getElementById("trajets-container");
+        const totalScoreElement = document.getElementById("total-score");
+        const calculateScoreButton = document.getElementById("calculate-score");
+
+        // Fonction pour ajouter dynamiquement chaque trajet avec informations et case à cocher
+        trajets.forEach((trajet, index) => {
+            const trajetElement = document.createElement("div");
+            trajetElement.classList.add("bike-trip");
+
+            trajetElement.innerHTML = `
+                <img src="${trajet.img}" alt="Circuit ${index + 1}">
+                <div class="bike-trip-info">
+                    <h2>${trajet.nom}</h2>
+                    <p><strong>Dénivelé :</strong> ${trajet.denivele}</p>
+                    <p><strong>Distance :</strong> ${trajet.distance}</p>
+                    <p><strong>Temps :</strong> ${trajet.temps}</p>
+                    <p><strong>Lieu :</strong> ${trajet.lieu}</p>
+                    <p><strong>Points :</strong> ${trajet.points}</p>
+                    <div class="checkbox-container">
+                        <label>
+                            <input type="checkbox" class="trajet-checkbox" data-points="${trajet.points}" data-index="${index}">
+                            Sélectionner
+                        </label>
+                    </div>
+                </div>
+            `;
+
+            trajetsContainer.appendChild(trajetElement);
+        });
+
+        // Fonction pour calculer et afficher le score total
+        calculateScoreButton.addEventListener("click", () => {
+            let totalScore = 0;
+
+            // Parcours des cases à cocher
+            const checkboxes = document.querySelectorAll(".trajet-checkbox");
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    totalScore += parseInt(checkbox.getAttribute("data-points"));
+                }
+            });
+
+            totalScoreElement.textContent = totalScore;
+        });
+    </script>
 
 </body>
 </html>
